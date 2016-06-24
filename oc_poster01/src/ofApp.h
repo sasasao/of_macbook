@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "MorseCodePlayer.hpp"
+#include "Meme.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -21,14 +22,17 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-    vector<MorseCodeSymbol> morseCodeSymbols;
+    //vector<MorseCodeSymbol> morseCodeSymbols;
+    std::vector<Meme>memes;
+    
     int currentIndex;
     
     MorseCodePlayer player;
     MorseCodeSymbol currentSymbol;
     
     ofTrueTypeFont font;
-
-		
-    //#include <fstream>
+    
+    
+    #include <fstream>
+    #include <iostream>
 };

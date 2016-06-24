@@ -4,46 +4,42 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     currentIndex = 0;
+
     
-    //Path to the comma delimited file
+    //string filePath = "morse.csv";
     string filePath = "meme_sample.csv";
     
-    //Use a ofTrueTypeFont for scalable text
     font.load("frabk.ttf", 122);
-    
-    //Load file placed in bin/data
     ofFile file(filePath);
-    
     if(!file.exists()){
         ofLogError("The file " + filePath + " is missing");
     }
     ofBuffer buffer(file);
     
+    memes = *new vector <Meme>;
+    
+    
     //Read file line by line
     for (ofBuffer::Line it = buffer.getLines().begin(), end = buffer.getLines().end(); it != end; ++it) {
         string line = *it;
-        //Split line into strings
-        vector<string> words = ofSplitString(line, ",");
         
-        //Store strings into a custom container
-        if (words.size()>=10) {
-            MorseCodeSymbol symbol;
-            symbol.character = words[0];
-            symbol.code = words[1];
-            
-            //Save MorseCodeSymbols for later
-            morseCodeSymbols.push_back(symbol);
-            
-            //Debug output
-            ofLogVerbose("symbol.character: " + symbol.character);
-            ofLogVerbose("symbol.code: " + symbol.code);
-        }
+        Meme meme = *new Meme();
+        vector<string> data = ofSplitString(line, ",");
+        
+        meme.user_id = data[0];
+        meme.zone_date = data[1];
+        meme.zone_focus = ofToFloat(data[2]);
+        meme.zone_calm = ofToFloat(data[3]);
+        meme.zone_posture = ofToFloat(data[4]);
+        
+        memes.push_back(meme);
     }
+    
+    cout << "格納されたmemeオブジェクトの個数は" << memes.size() << endl;
+    cout << "---------------------------------";
     
     //Load our Morse code sounds
     player.setup();
-
-    
 }
 
 //--------------------------------------------------------------
@@ -56,27 +52,15 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    ofDrawBitmapString("PRESS A KEY (A-Z, 0-9) TO PLAY MORSE CODE", 20, 20);
-    string line1 = currentSymbol.character;
-    string line2 = currentSymbol.code;
-    font.drawString(line1, (ofGetWidth() - font.stringWidth(line1))/2, ofGetHeight()/2);
-    font.drawString(line2, (ofGetWidth() - font.stringWidth(line2))/2, ofGetHeight()/2+font.stringHeight(line1));
+    for (int i=0; i<10; i++) {
+        Meme meme = memes.get(i);
+        cout << meme.user_id << ":" << meme.zone_focus << endl;
+    }
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    //Create a comparable string from an int
-    string myKey;
-    myKey = (char) key;
-    myKey = ofToUpper(myKey);
-    
-    for (unsigned int i=0; i<morseCodeSymbols.size(); i++) {
-        if (morseCodeSymbols[i].character == myKey){
-            currentSymbol = morseCodeSymbols[i];
-            player.playCode(currentSymbol.code);
-        }
-    }
-
     
 }
 
