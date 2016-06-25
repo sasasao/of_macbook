@@ -16,7 +16,7 @@ void ofApp::setup(){
     }
     ofBuffer buffer(file);
     
-    memes = *new vector <Meme>;
+    //memes = *new vector <Meme>;
     
     
     //Read file line by line
@@ -36,7 +36,7 @@ void ofApp::setup(){
     }
     
     cout << "格納されたmemeオブジェクトの個数は" << memes.size() << endl;
-    cout << "---------------------------------";
+    cout << "---------------------------------"<<endl;
     
     //Load our Morse code sounds
     player.setup();
@@ -53,7 +53,7 @@ void ofApp::update(){
 void ofApp::draw(){
     
     for (int i=0; i<10; i++) {
-        Meme meme = memes.get(i);
+        Meme meme = memes[i];
         cout << meme.user_id << ":" << meme.zone_focus << endl;
     }
     
