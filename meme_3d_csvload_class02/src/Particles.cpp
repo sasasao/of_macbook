@@ -1,12 +1,6 @@
 #include "Particles.hpp"
 
 Particles::Particles(int _maxParticles, string filePath_meme, string filePath_first){
-    //string filePath_meme = "tamabi10.csv";
-    //string filePath_first = "010_ST.csv";
-    
-    /*for (int i=0; i<4; i++){
-     char char[32];
-     sprintf(char16, );}*/
     
     centerPos = ofVec3f(ofRandom(-1000, 1000), ofRandom(-1000, 1000), ofRandom(-1000, 1000));
     centerVelocity = ofVec3f(ofRandom(-10, 10), ofRandom(-10, 10), ofRandom(-10, 10));
@@ -40,6 +34,7 @@ Particles::Particles(int _maxParticles, string filePath_meme, string filePath_fi
     }
 }
 
+
 void Particles::resetForce(){
     for(int i = 0; i < positions.size(); i++){
         forces[i] = ofVec2f(0, 0);
@@ -58,12 +53,12 @@ void Particles::addDampingForce(){
 
 void Particles::resetOffWalls(){
     float meshSize = 0;
-    float minx = -1000;
-    float miny = -1000;
-    float minz = -1000;
-    float maxx = 1000;
-    float maxy = 1000;
-    float maxz = 1000;
+    float minx = -1200;
+    float miny = -300;
+    float minz = -200;
+    float maxx = 1200;
+    float maxy = 300;
+    float maxz = 100;
     
     if (centerPos.x > maxx || centerPos.x < minx){
         centerVelocity.x *= -1;
@@ -128,7 +123,7 @@ void Particles::draw(){
         morph_calm = ofLerp(calm, next_calm, percent);
         morph_posture = ofLerp(posture, next_posture, percent);
         
-        float posture_loc = ofMap(morph_posture, min_posture, max_posture, 50, 400);
+        float posture_loc = ofMap(morph_posture, min_posture, max_posture, 0, 500);
         //頂点の位置を取得
         ofVec3f loc = mesh.getVertices()[i] / posture_loc;
         //perlinノイズを生成
@@ -144,8 +139,8 @@ void Particles::draw(){
         float B = ofMap(meme.zone_posture, min_posture, max_posture, 0, 1.0);
         
         mesh.setColor(i, ofFloatColor(R,G,B,1));
-        outside.setColor(i, ofFloatColor(1.0,1.0,1.0,0.5));
-        mesh_line.setColor(i, ofFloatColor(1.0,1.0,1.0,1));
+        outside.setColor(i, ofFloatColor(1.0, 1.0, 1.0, 0.1));
+        mesh_line.setColor(i, ofFloatColor(R,G,B,0.5));
     }
     
     for (int i = 0; i < positions.size(); i++) {

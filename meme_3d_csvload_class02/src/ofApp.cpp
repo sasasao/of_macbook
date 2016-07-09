@@ -13,7 +13,6 @@ void ofApp::setup(){
 //    light.setDiffuseColor(ofFloatColor(0.3, 0.3, 0.3, 1.0));
     
     light.setPointLight();
-    cam.setDistance(2000);
     
     
     width = ofGetWidth();
@@ -29,17 +28,26 @@ void ofApp::setup(){
         p = new Particles(particleNum, "tamabi0" + ofToString(i) + ".csv", "00" + ofToString(i) + "_ST.csv");
         particles.push_back(p);
     }
+    p = new Particles(particleNum, "tamabi08.csv", "008_ST.csv");
+    particles.push_back(p);
+    p = new Particles(particleNum, "tamabi09.csv", "009_ST.csv");
+    particles.push_back(p);
     
-    /*
-    p = new Particles(particleNum, "tamabi01.csv", "001_ST.csv");
+    for (int i = 10; i < 15; i++) {
+        p = new Particles(particleNum, "tamabi" + ofToString(i) + ".csv", "0" + ofToString(i) + "_ST.csv");
+        particles.push_back(p);
+    }
+    
+    
+    /*p = new Particles(particleNum, "tamabi01.csv", "001_ST.csv");
     particles.push_back(p);
     p = new Particles(particleNum, "tamabi02.csv", "002_ST.csv");
     particles.push_back(p);
     p = new Particles(particleNum, "tamabi03.csv", "003_ST.csv");
     particles.push_back(p);
-    p = new Particles(particleNum, "tamabi04.csv", "004_ST.csv");
-    particles.push_back(p);
-    */
+    p = new Particles(particleNum, "tamabi13.csv", "013_ST.csv");
+    particles.push_back(p);*/
+    
     
     
     for (int i = 0; i < particles.size(); i++) {
