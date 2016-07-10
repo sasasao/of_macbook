@@ -20,11 +20,11 @@ MyMesh::MyMesh(float _zone_focus, float _zone_calm, float _zone_posture) {
 }
 
 void MyMesh::draw(){
-    //頂点の数だけ繰り返し
-    /*for (int i = 0; i < meshA.getVertices().size(); i++) {
+    /*//頂点の数だけ繰り返し
+    for (int i = 0; i < meshA.getVertices().size(); i++) {
         int m = ofMap(i, 0, meshA.getVertices().size(), 0, memes.size());
-        Meme meme = memes[m];
-        float calm_loc = ofMap(meme.zone_calm, min_calm, max_calm, 50, 200);
+        //Meme meme = memes[m];
+        float calm_loc = ofMap(zone_calm, min_calm, max_calm, 50, 200);
         
         //頂点の位置を取得
         ofVec3f loc = meshA.getVertices()[i] / calm_loc;
@@ -45,9 +45,11 @@ void MyMesh::draw(){
         meshA.setColor(i, ofFloatColor(R,G,B,1));
         
     }*/
-
+    
+    cout << zone_calm << endl;
+    
     ofPushMatrix();
     ofTranslate(pos.x, pos.y);
-    meshA.draw();
+    //meshA.draw();
     ofPopMatrix();
 }

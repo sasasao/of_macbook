@@ -11,6 +11,7 @@ void ofApp::setup(){
     
     
     
+    
     ofEnableDepthTest();
     //対象からの距離の初期値を指定
     cam.setDistance(300);
@@ -146,9 +147,11 @@ void ofApp::loadCsvToMemes(string filePath){
             
         }
     }
-//    cout << memes.size() << endl;
-    mes.push_back(MyMesh(memes[0].zone_focus, memes[0].zone_calm, memes[0].zone_posture));
-
+    //cout << memes.size() << endl;
+    for(int i=0; i<memes.size(); i++){
+        mes.push_back(MyMesh(memes[i].zone_focus, memes[i].zone_calm, memes[i].zone_posture));
+    }
+    
 }
 
 
