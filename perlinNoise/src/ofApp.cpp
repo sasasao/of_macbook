@@ -17,7 +17,7 @@ void ofApp::setup(){
     pixels = myImage.getPixels();
     
     particleNum = 1;
-    particles = new Particles(particleNum);
+    particles = new Particles(10000);
     
     ofVec3f position = ofVec3f(ofRandom(width), ofRandom(height));
     particles->addParticle(position);
