@@ -99,7 +99,7 @@ public:
     
     
     
-    int h;
+    float h;
     
     float percent = 0;  //モーフィングの割合（lerp関数で使うため、1を超えないようにする）
     

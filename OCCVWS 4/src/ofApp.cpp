@@ -18,7 +18,7 @@ void ofApp::setup(){
     ofTrueTypeFont::setGlobalDpi(100);
     //font.loadFont("SourceHanCodeJP-Normal.otf",10,true,true);
     //font.loadFont("A-OTF-FolkPro-Regular.otf",10,true,true);
-    font.loadFont("Bauhaus-Light.otf",15,true,true);
+    font.loadFont("Bauhaus-Bold.otf",17,true,true);
     
     
     //dataフォルダに配置したcsvファイルの名前
@@ -136,33 +136,28 @@ void ofApp::draw(){
     }
     
     
-    ofSetLineWidth(100);
-    int vertex_x = 2;
+    ofSetLineWidth(200);
+    float vertex_x = 1.5;
+    float time = 0;
+    float time1 = 150;
     
-    ofSetColor(color_foc, 100, color_sle, 50);
-    ofDrawLine(0, h, morph_eye, h);
-    ofSetColor(color_foc1, 100, color_sle1, 50);
-    ofDrawLine(ofGetWidth(), h, -morph_eye1 + ofGetWidth(), h);
+    ofSetColor(color_foc, 0, color_sle, 50);
+    ofDrawLine(0, h+time, morph_eye *vertex_x, h+time);
     
-    
-    
-    int eli_x = 6;
-    int eli_size = 5;
-    int eli_alpha = 100;
-    ofSetLineWidth(1);
-    ofNoFill();
-    
-    cout << color_cad << endl;
-    
-    
-    ofSetColor(color_cad, 0,0);
-    ofDrawEllipse(morph_cad *eli_x, h, eli_size, eli_size);
-    
-    ofSetColor(color_cad1, 0,0);
-    ofDrawEllipse(-morph_cad1    *eli_x +ofGetWidth(), h, eli_size, eli_size);
-    
+    ofSetColor(color_foc1, 0, color_sle1, 50);
+    ofDrawLine(ofGetWidth(), h +time1, -morph_eye1 *vertex_x + ofGetWidth(), h +time1);
     
 
+    int eli_x = 2;
+    int eli_size = 7;
+    int eli_alpha = 100;
+    ofSetLineWidth(2);
+    ofNoFill();
+    
+    ofSetColor(20,15, 200, 50);
+    ofDrawEllipse(morph_cad *eli_x +300, h+time, eli_size, eli_size);
+    ofDrawEllipse(-morph_cad1 *eli_x -300 +ofGetWidth(), h +time1, eli_size, eli_size);
+    
 
     
     if(percent >= 1.0){
@@ -202,16 +197,16 @@ void ofApp::draw(){
     
     ofFill();
     //ofSetColor(86,175,185);
-    ofSetColor(0);
-    for (int i = 0; i < 10; i++){
+    ofSetColor(100,100,100);
+    for (int i = 0; i < 1; i++){
         float fw = font.stringWidth(""+ofToString(0));
         float x = ofGetWidth()/2-fw/2;
-        font.drawString(""+ofToString(i), x, 20 + ((ofGetHeight()-20) /24)*i);
+        font.drawString(""+ofToString(i+9), x, 20 + ((ofGetHeight()-20) /15)*i);
     }
-    for (int i = 10; i < 25; i++){
+    for (int i = 1; i < 16; i++){
         float fw = font.stringWidth(""+ofToString(10));
         float x = ofGetWidth()/2-fw/2;
-        font.drawString(""+ofToString(i), x, 20+((ofGetHeight()-20)/24)*i);
+        font.drawString(""+ofToString(i+9), x, 20+((ofGetHeight()-20)/15)*i);
     }
     
 
