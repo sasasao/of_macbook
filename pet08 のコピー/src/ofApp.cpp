@@ -11,9 +11,9 @@ void ofApp::setup(){
 //  light.setAmbientColor(ofFloatColor(0.5, 0.5, 0.5, 1.0));
 //  light.setDiffuseColor(ofFloatColor(0.3, 0.3, 0.3, 1.0));
     light.setPointLight();
-    cam.setDistance(3000);
+    cam.setDistance(0);
     
-    /*
+    
     Pets *p;
     p = new Pets("tamabi08.csv", "008_ST.csv");
     pets.push_back(p);
@@ -28,7 +28,7 @@ void ofApp::setup(){
         p = new Pets("tamabi" + ofToString(i) + ".csv", "0" + ofToString(i) + "_ST.csv");
         pets.push_back(p);
     }
-    */
+    
 
 }
 

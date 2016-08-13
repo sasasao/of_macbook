@@ -2,7 +2,7 @@
 
 Pets::Pets(string filePath_memeA, string filePath_memeB){
     centerPos = ofVec3f(ofRandom(-1000,1000), ofRandom(-1000,1000), ofRandom(-1000,1000));
-    centerVelocity = ofVec3f(ofRandom(-1,1),ofRandom(-1,1),  ofRandom(-1,1));
+    centerVelocity = ofVec3f(ofRandom(-10,max_cadence),ofRandom(-10,max_cadence),  ofRandom(-10,max_cadence));
     
     loadCsvToMemesA(filePath_memeA);
     loadCsvToMemesB(filePath_memeB);
